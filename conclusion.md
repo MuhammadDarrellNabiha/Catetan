@@ -59,6 +59,33 @@ desain jaringa yang menentukan tata letak server berada di layanan penydeia serv
 Hybird
 gabugnan antara cloude and on premise
 
+|--------------2nd-Brainstorming------------|
+
+OS Archittecture
+
+dalam sebuah operating system terdapat arsitektur yang membedakan process berdasrakan level abstraksinya, level abstraksi ini dibuat dengan tujuan untuk mempermudah user dalam mengorganize tiap fungsi dari sebuah os
+
+ada tiga level abstaraksi
+
+level pertama merupakan hardaware,
+hardware merupakan bentuk fisik dari bagian system yang sedang kita gunakancontoh montitor gpu memory cpu
+
+level kedua adalah kernel space,
+kernel space merupakan level abstraksi dimana semua code kernel dijalankan untuk mengarahkan hardware melakukan tugas nya, semua code kernal ini dijalankan di kernel mode yang artinya code ini dapet menginisialiasi semua fungsi hardware tanpa ada batas, ini merupakan kelebihan yang sangat mengerikankarena jika tidak sesuai dengan kemampuan hardware maka akan merusak hardware
+
+level ketiga adalah user space, tempat diamana semua process yang berjalan dengan user mode dijalankan tempat ini adalah tempat dimana user mengarahkan perintah yang akan di teruskan ke kernel malalui systemcall
+
+Systemcall
+
+systemcall adalah sebuah interface yang menghubungkan kernel space dengan uuser space, tiap program/process yang membutuhkan hardware untuk berkerja harus mengirimkan systemcall ke kernel karena hanya kernel yang punya kendali ke hardwar, systemcall berbentuk sebuah function/request yang merupakan pintu masuk dan permintaan ke arah kernel
+
+ada banyak jenis systemcall, namun dalam pembahasan kali ini kita belajar tentang fork() systemcall, systemcall ini dapat melakukan permintaan untuk kernel membuat sebuah process yang identik dengan process aslinya, duplikasiprocess ini akan menghasilkan dua process identik yang dinamai child process semua hasil child process akan dikirm ke process asli yang dinamai parent process untuk ditampilkan di monitor.
+
+CPU Program and Process Flow
+
+seperti yang kita bahas di OS architecture, CPU memiliki perilaku berbeda terhadap process yang berkerja di dalam user mode dan kernel mode, perbedaanini dapat menentukan flow yang akan dilakukan cpu dalam mengkseuki perintahdan menerapkan nya ke memori
+
+
 
 
 

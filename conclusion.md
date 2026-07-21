@@ -86,6 +86,22 @@ CPU Program and Process Flow
 seperti yang kita bahas di OS architecture, CPU memiliki perilaku berbeda terhadap process yang berkerja di dalam user mode dan kernel mode, perbedaanini dapat menentukan flow yang akan dilakukan cpu dalam mengkseuki perintahdan menerapkan nya ke memori
 
 
+|---------------3rd Brainstorming--------------------------------------|
+Partition table
+partition table adalah metadata yang digunakan linux untuk mengetahui identitas dari sebuah disk, pada awal nya disk yang baru keluar dari pabrik hanya berisi sektor sektor kosong yang sebenarnya bisa di isi linux namun jika linux kernel langsung mengsisi disk tersebut maka isis itu tidak akan berarturan, disini lah kegunaan metadata partition table, tujuan nya untuk memberitahu kernel tentang informasi dari sebuah disk sehingga disk bisa di partisi dan diisi secara teratur, biasanya isi dari pertition table adalah id disk,list partisi yang ada di sebuah disk, awal file bisa di tulis, akhir file bisa di tulis. partition table terletak di awal sectordisk supaya efi dapat membaca dan mendeteksi disk saat boot
+
+GPT dan MBR
+GPT merupakan singkatan dari GUID PARTITION TABLE , partition table ini menggunakan global uniqe identifier untuk mengidentifikasi sebuah disk, gpt merupakan partition table paling baru yang sangat fleksibel karena tidak memiliki aturan unik seperti mbr dalam pembuatan partisi nya karena disusun dengan kapasitas yang sangat besar yaitu 128 bit
+
+MBR merupakan singkatan dari master boot record, merupakan partition table lama yang berdiri dari awal ibm pc partisi ini memiliki keterbatasan dalam membuat metadata yaitu pembatasan ukuran disk yaitu 2tb, mbr juga memiliki kelemahan yaitu tidak dapat membuat lebih dari 4 partisi. ia mamiliki dua struktur partisi yaitu primary partirion dan extended partition yang mewakili logical partition
+
+filesystem
+filesystem adalah aturan yang dibuat untuk mengaatur file yang di masukan kedalam sebuah disk atau partisi. jenis jenis filesystem :
+ext4 (fourth extended filesystem) merupakan filsesystem yang diguakan oleh linux untuk di jadikan sebuah / dierctory bermula
+xhs  merupakan filesystam yang digunakan untuk server beser akrena terkanel dengan kecepatan serta kompatibilitas nya yang sangat bagus
+fat32 filesystem yang digunakan oleh EFI
+
+
 
 
 

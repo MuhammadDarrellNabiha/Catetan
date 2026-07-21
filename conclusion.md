@@ -101,6 +101,45 @@ ext4 (fourth extended filesystem) merupakan filsesystem yang diguakan oleh linux
 xhs  merupakan filesystam yang digunakan untuk server beser akrena terkanel dengan kecepatan serta kompatibilitas nya yang sangat bagus
 fat32 filesystem yang digunakan oleh EFI
 
+anatomi filesystem ext4
+Filesystem (ext4)
+│
+├── Block Group 0
+│     ├── Primary Superblock
+│     ├── Primary GDT
+│     ├── Block Bitmap
+│     ├── Inode Bitmap
+│     ├── Inode Table
+│     └── Data Blocks
+│
+├── Block Group 1
+│     ├── Block Bitmap
+│     ├── Inode Bitmap
+│     ├── Inode Table
+│     └── Data Blocks
+│
+├── Block Group N (yang dipilih sparse_super)
+│     ├── Backup Superblock
+│     ├── Backup GDT
+│     ├── Block Bitmap
+│     ├── Inode Bitmap
+│     ├── Inode Table
+│     └── Data Blocks
+
+
+anatomi gpt partition table
+SSD
+
+├── GPT Header
+├── Partition Entry Array
+│
+├── Partition 1
+├── Partition 2
+├── Partition 3
+│
+├── Backup Partition Entry Array
+└── Backup GPT Header
+
 
 
 

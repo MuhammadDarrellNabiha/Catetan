@@ -106,11 +106,23 @@ Filesystem (ext4)
 │
 ├── Block Group 0
 │     ├── Primary Superblock
+            superblock merupakan metadata dari sebuah filesystem, metadata            ini digunakan untuk mengetahui informasi seperti total block              di dalam filesystem dan juga jenis filesystemc
 │     ├── Primary GDT
 │     ├── Block Bitmap
+            block bitmap merupkan indikator angka biner yang memberitahu k            ernel bahwa sebuah block sudah terisi oleh sebuha data 1 berar            -ti sudah terisi dan 0 belom terisi
 │     ├── Inode Bitmap
+            indode bitmap adalah indikator angka biner yang memberitahukan            kernel bahwa sebuah inode di inode table telah di gunakan.
 │     ├── Inode Table
+            apa itu inode,inode merupakan singkatan dari index node, yang             merupakan sebuah value yang biasanya sebuah integar dijadikan             sebagai identifier sebuah file dan directory, identifier ini              berbentuk metadata yang digunakan kernel untuk mengetahui di -            block mana sebauh fila bermula dan berakhir (Pointer) serta 
+            metadata ini juga memberitahu bahwa di data block tersebut 
+            merupkan sebuahfile ataupun folder, inode juga menyimpan 
+            informasi tentang perrmission owner dan sebagainya. inode
+            table adalah sebuah tempat yang digunakan untuk menyimpan
+            inode.
 │     └── Data Blocks
+            data Blocks merupakan tempat data dari sebuah file disimpan
+            dalam bentuk raw nya yaitu bilang biner 0 dan 1
+            
 │
 ├── Block Group 1
 │     ├── Block Bitmap
@@ -141,6 +153,18 @@ SSD
 └── Backup GPT Header
 
 
+directory-entry
 
+ketika kernel melakukan paths-resolution kernel tidak menjelajahi setiap directory dengan membaca setiap inode dari inode table, melainkan dari informasi dari directory entry. directory entry merupakan data yang berasal dari sebuah directory yang isinya merupkan inode serta nama dari sebuah fileatau directory yang berada di dalam directory tersebut, dengan directory entry kernal akan lebih efisien dibandingkan kernel haru mengecek tiap inode dari awal sampai akhir dan menentukna path nya satu persatu.
+
+hardlink
+
+hardlink merupakan hasil dari command ln dan digunakan untuk menduplkat file entry kedalam inode yang sama namun di dalam directory entry terdapat dua nama yang mengarah ke sebuah inode. ketika kita membuat hardlink terdapat 1 pointer ata
+
+symlink 
+symlink merupkan hsil dari command ls -s yang membuat sebuah inode baru yang berisi path dari folder asli berada.
+
+VFS
+vfs(virtual filesystem) merupakan bagian kernel yang dapat memahami semua bahasa driver yang ada ntfs,xfs,ext4 dan sebagainya. vfs merupakan jembatan dari kernel ke driver karena kernel tidak mengerti tiap bahasa driver dari sebuah filesystem secara langsung, proses path resolutoion dilakukan oleh vfs.
 
 

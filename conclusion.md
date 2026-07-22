@@ -167,4 +167,34 @@ symlink merupkan hsil dari command ls -s yang membuat sebuah inode baru yang ber
 VFS
 vfs(virtual filesystem) merupakan bagian kernel yang dapat memahami semua bahasa driver yang ada ntfs,xfs,ext4 dan sebagainya. vfs merupakan jembatan dari kernel ke driver karena kernel tidak mengerti tiap bahasa driver dari sebuah filesystem secara langsung, proses path resolutoion dilakukan oleh vfs.
 
+mounting
+proses mount adalah proses mengabungkan dua disk agar dapat posisi yang sama di mata kernel sehingga kernal dapat mengira bahwa disk yang telah di mount merupakan satu kesatuan dengan disk lainya. mounting berkerja dengan memansan sebuah point access di dalam disk utama yang ingin di gabungkan.
 
+command partittining, formatiing, mounting
+
+1. sudo fdisk -l dev/sdx
+2. lsblk -o NAME,etc
+
+3. sudo fdisk dev/sdx option: -n new partition
+                                -g new gpt (guid partition table)
+                                -m new mbr (master boot record)
+                                -w write new partition 
+4. sudo mkfs -t <type> <device>
+5. sudo mkfs -t <type> -s size=<size> <device>
+    sudo mkfs -t vfat -F 32 <device> ---> efi partiion or FAT filesystem
+
+6. sudo mount /dev/sdx /mountpoint
+7. verfikasi filesystem & Mount : -df -Th <device>
+                                    -lsblk -o NAME,MOUNPOINT
+8. cek UUID : blkid <device>
+              -lsblk -o NAME,UUID | grep -i <device>
+9. add /etc/fstab option=defaults dump=0 pass= <2> ---> for ext4 
+                                                <0> ---> for xfs
+                                                <1> ---> FAT32 || efi
+
+
+                                    
+10. findmnt <mountpoint>
+    sudo mount -a ---> checking fstab format
+
+11. done
